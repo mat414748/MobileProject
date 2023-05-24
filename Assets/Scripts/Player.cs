@@ -5,13 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
-    public GameObject wallPrefab;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        Instantiate(wallPrefab);
     }
 
     // Update is called once per frame
