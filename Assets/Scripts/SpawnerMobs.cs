@@ -6,6 +6,7 @@ using UnityEngine;
 public class SpawnerMobs : MonoBehaviour
 {
     public GameObject[] mobs;
+    public MainMenu mainMenu;
     public GameObject skeleton;
     public GameObject mushroom;
     public GameObject goblin;
@@ -21,10 +22,12 @@ public class SpawnerMobs : MonoBehaviour
         mobs[1] = mushroom;
         mobs[2] = goblin;
         mobs[3] = bat;
+        mainMenu.actualMonster = ChangeEnemy(mainMenu.deathCounter);
     }
     public int ChangeEnemy(int deathCounter)
     {
-        int random = Random.Range(0, mobs.Length);
+        int random = Random.Range(0, (mobs.Length - 1));
+        Debug.Log(mobs.Length + ", " + random);
         if (deathCounter == 9)
         {
             mobs[random].transform.localPosition += new Vector3(0, 0.5f, 0);

@@ -29,11 +29,48 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        actualMonster = spawner.ChangeEnemy(deathCounter);
+        Debug.Log("Hello");
         deathCounter = 1;
         stageCounter = 1;
-        killReward = 10;
-        tapDamage = 10;
+        //Get kills
+        if (PlayerPrefs.GetInt("Kills") == 0)
+        {
+            deathCounter = 1;
+        }
+        else
+        {
+            deathCounter = PlayerPrefs.GetInt("Kills");
+        }
+        //Get stage
+        if (PlayerPrefs.GetInt("Stage") == 0)
+        {
+            stageCounter = 1;
+        }
+        else
+        {
+            stageCounter = PlayerPrefs.GetInt("Stage");
+            spawner.SwapStage(stageCounter);
+        }
+        //Get saved reward
+        if (PlayerPrefs.GetInt("Reward") == 0)
+        {
+            killReward = 10;
+        }
+        else
+        {
+            killReward = PlayerPrefs.GetInt("Reward");
+        }
+        //Get saved Damage
+        if (PlayerPrefs.GetInt("TapDamage") == 0)
+        {
+            tapDamage = 10;
+        }
+        else
+        {
+            tapDamage = PlayerPrefs.GetInt("TapDamage");
+        }
+         
+        money = PlayerPrefs.GetInt("Money");      
     }
 
     // Update is called once per frame
@@ -56,8 +93,11 @@ public class MainMenu : MonoBehaviour
             }
             deathCounter++;
             deathCounterText.text = $"Monster {deathCounter}/10";
-            //PlayerPrefs.SetInt
-            //PlayerPrefs.GetInt
+            PlayerPrefs.SetInt("Money", money);
+            PlayerPrefs.SetInt("TapDamage", tapDamage);
+            PlayerPrefs.SetInt("Reward", killReward);
+            PlayerPrefs.SetInt("Kills", deathCounter);
+            PlayerPrefs.SetInt("Stage", stageCounter);
         }
         animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
         if (animStateInfo.IsName("Attack"))
