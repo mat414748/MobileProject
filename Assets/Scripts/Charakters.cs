@@ -10,7 +10,15 @@ public class Charakters : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        passiveDmg = 0;
+        if (PlayerPrefs.GetInt("PassDmg") == 0)
+        {
+            passiveDmg = 0;
+        }
+        else
+        {
+            passiveDmg = PlayerPrefs.GetInt("PassDmg");
+        }
+        
     }
 
     // Update is called once per frame

@@ -14,7 +14,15 @@ public class HealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxHealthAmount = healthAmount;
+        if (PlayerPrefs.GetInt("Stage") == 0)
+        {
+            maxHealthAmount = healthAmount;
+        }
+        else
+        {
+            healthAmount *= PlayerPrefs.GetInt("Stage");
+            maxHealthAmount = healthAmount;
+        }
         healtText.text = $"HP:{healthAmount}/{maxHealthAmount}";
     }
 

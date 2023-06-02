@@ -54,21 +54,138 @@ public class UpgradesMenu : MonoBehaviour
     void Start()
     {
         //Start Hero variables
-        heroUpgradeLevel = 1;
-        heroUpgradeCost = 10;
-        heavyUpgradeLevel = 1;
-        heavyUpgradeCost = 30;
-        enhUpgradeLevel = 1;
-        enhUpgradeCost = 50;
-        warUpgradeLevel = 1;
-        warUpgradeCost = 70;
-        //Start Charakters variables
-        jabaUpgradeLevel = 1;
-        jabaUpgradeCost = 20;
-        hokkyUpgradeLevel = 1;
-        hokkyUpgradeCost = 50;
-        arnoldUpgradeLevel = 1;
-        arnoldUpgradeCost = 100;
+        if (PlayerPrefs.GetInt("HeroLevel") == 0)
+        {
+            heroUpgradeLevel = 1;
+        }
+        else
+        {
+            heroUpgradeLevel = PlayerPrefs.GetInt("HeroLevel");
+            heroLevelText.text = $"Hero LV.{heroUpgradeLevel}";
+        }
+
+        if (PlayerPrefs.GetFloat("HeroUp") == 0)
+        {
+            heroUpgradeCost = 10;
+        }
+        else
+        {
+            heroUpgradeCost = PlayerPrefs.GetFloat("HeroUp");
+        }
+        //Heavy strike
+        if (PlayerPrefs.GetInt("HeavyLevel") == 0)
+        {
+            heavyUpgradeLevel = 1;
+        }
+        else
+        {
+            heavyUpgradeLevel = PlayerPrefs.GetInt("HeavyLevel");
+            heavyLevelText.text = $"Heavy strike LV.{heavyUpgradeLevel}";
+        }
+
+        if (PlayerPrefs.GetFloat("HeavyUp") == 0)
+        {
+            heavyUpgradeCost = 30;
+        }
+        else
+        {
+            heavyUpgradeCost = PlayerPrefs.GetFloat("HeavyUp");
+        }
+        //Enhancement
+        if (PlayerPrefs.GetInt("EnhLevel") == 0)
+        {
+            enhUpgradeLevel = 1;
+        }
+        else
+        {
+            enhUpgradeLevel = PlayerPrefs.GetInt("EnhLevel");
+            enhLevelText.text = $"Enhancement LV.{enhUpgradeLevel}";
+        }
+
+        if (PlayerPrefs.GetFloat("EnhUp") == 0)
+        {
+            enhUpgradeCost = 50;
+        }
+        else
+        {
+            enhUpgradeCost = PlayerPrefs.GetFloat("EnhUp");
+        }
+        //War cry
+        if (PlayerPrefs.GetInt("WarLevel") == 0)
+        {
+            warUpgradeLevel = 1;
+        }
+        else
+        {
+            warUpgradeLevel = PlayerPrefs.GetInt("WarLevel");
+            warLevelText.text = $"War Cry LV.{warUpgradeLevel}";
+        }
+
+        if (PlayerPrefs.GetFloat("WarUp") == 0)
+        {
+            warUpgradeCost = 70;
+        }
+        else
+        {
+            warUpgradeCost = PlayerPrefs.GetFloat("WarUp");
+        }
+        //Jaba
+        if (PlayerPrefs.GetInt("JabaLevel") == 0)
+        {
+            jabaUpgradeLevel = 1;
+        }
+        else
+        {
+            jabaUpgradeLevel = PlayerPrefs.GetInt("JabaLevel");
+            jabaLevelText.text = $"Jaba LV.{jabaUpgradeLevel}";
+        }
+
+        if (PlayerPrefs.GetFloat("JabaUp") == 0)
+        {
+            jabaUpgradeCost = 20;
+        }
+        else
+        {
+            jabaUpgradeCost = PlayerPrefs.GetFloat("JabaUp");
+        }
+        //Hokky
+        if (PlayerPrefs.GetInt("HokkyLevel") == 0)
+        {
+            hokkyUpgradeLevel = 1;
+        }
+        else
+        {
+            hokkyUpgradeLevel = PlayerPrefs.GetInt("HokkyLevel");
+            hokkyLevelText.text = $"Hokky LV.{hokkyUpgradeLevel}";
+        }
+
+        if (PlayerPrefs.GetFloat("HokkyUp") == 0)
+        {
+            hokkyUpgradeCost = 50;
+        }
+        else
+        {
+            hokkyUpgradeCost = PlayerPrefs.GetFloat("HokkyUp");
+        }
+        //Arnold
+        if (PlayerPrefs.GetInt("ArnoldLevel") == 0)
+        {
+            arnoldUpgradeLevel = 1;
+        }
+        else
+        {
+            arnoldUpgradeLevel = PlayerPrefs.GetInt("ArnoldLevel");
+            arnoldLevelText.text = $"Arnold LV.{arnoldUpgradeLevel}";
+        }
+
+        if (PlayerPrefs.GetFloat("ArnoldUp") == 0)
+        {
+            arnoldUpgradeCost = 100;
+        }
+        else
+        {
+            arnoldUpgradeCost = PlayerPrefs.GetFloat("ArnoldUp");
+        }
     }
 
     // Update is called once per frame

@@ -11,11 +11,11 @@ public class Abilitys : MonoBehaviour
     public Image heavyStrike;
     public Image enhancement;
     public Image warCry;
-    public float heavyStrikeMultiplikator;
+    public int heavyStrikeMultiplikator;
     public int enhancementMultiplikator;
     public int warMultiplikator;
     bool heavyAvailable = true;
-    bool enhAvailable = true;
+    public bool enhAvailable = true;
     bool warAvailable = true;
     //Heavy strike cooldowns
     float heavyCooldown = 10.0f;
@@ -30,9 +30,33 @@ public class Abilitys : MonoBehaviour
     void Start()
     {
         StartCoroutine(EverySecond());
-        enhancementMultiplikator = 3;
-        warMultiplikator = 3;
-        heavyStrikeMultiplikator = 10;
+        //Enh multiplicator
+        if (PlayerPrefs.GetInt("EnhMulti") == 0)
+        {
+            enhancementMultiplikator = 3;
+        }
+        else
+        {
+            enhancementMultiplikator = PlayerPrefs.GetInt("EnhMulti");
+        }
+        //War multiplicator
+        if (PlayerPrefs.GetInt("WarMulti") == 0)
+        {
+            warMultiplikator = 3;
+        }
+        else
+        {
+            warMultiplikator = PlayerPrefs.GetInt("WarMulti");
+        }
+        //Heavy multiplicator
+        if (PlayerPrefs.GetInt("HeavyMulti") == 0)
+        {
+            heavyStrikeMultiplikator = 10;
+        }
+        else
+        {
+            heavyStrikeMultiplikator = PlayerPrefs.GetInt("HeavyMulti");
+        }
     }
 
     // Update is called once per frame

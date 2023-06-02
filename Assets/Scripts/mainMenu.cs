@@ -12,6 +12,9 @@ public class MainMenu : MonoBehaviour
     public Animator animator;
     public SpawnerMobs spawner;
     public HealthManager healthManager; 
+    public UpgradesMenu upgradesMenu;
+    public Abilitys abilitys;
+    public Charakters charakters;
     public float normTime;
     public int money;
     public int tapDamage;
@@ -29,9 +32,6 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Hello");
-        deathCounter = 1;
-        stageCounter = 1;
         //Get kills
         if (PlayerPrefs.GetInt("Kills") == 0)
         {
@@ -40,6 +40,7 @@ public class MainMenu : MonoBehaviour
         else
         {
             deathCounter = PlayerPrefs.GetInt("Kills");
+            deathCounterText.text = $"Monster {deathCounter}/10";
         }
         //Get stage
         if (PlayerPrefs.GetInt("Stage") == 0)
@@ -94,10 +95,28 @@ public class MainMenu : MonoBehaviour
             deathCounter++;
             deathCounterText.text = $"Monster {deathCounter}/10";
             PlayerPrefs.SetInt("Money", money);
-            PlayerPrefs.SetInt("TapDamage", tapDamage);
+            PlayerPrefs.SetInt("TapDamage", upgradesMenu.heroUpgradeLevel * 5 + 10);
             PlayerPrefs.SetInt("Reward", killReward);
             PlayerPrefs.SetInt("Kills", deathCounter);
             PlayerPrefs.SetInt("Stage", stageCounter);
+            PlayerPrefs.SetInt("HeroLevel", upgradesMenu.heroUpgradeLevel);
+            PlayerPrefs.SetFloat("HeroUp", upgradesMenu.heroUpgradeCost);
+            PlayerPrefs.SetInt("HeavyLevel", upgradesMenu.heavyUpgradeLevel);
+            PlayerPrefs.SetFloat("HeavyUp", upgradesMenu.heavyUpgradeCost);
+            PlayerPrefs.SetInt("EnhLevel", upgradesMenu.enhUpgradeLevel);
+            PlayerPrefs.SetFloat("EnhUp", upgradesMenu.enhUpgradeCost);
+            PlayerPrefs.SetInt("WarLevel", upgradesMenu.warUpgradeLevel);
+            PlayerPrefs.SetFloat("WarUp", upgradesMenu.warUpgradeCost);
+            PlayerPrefs.SetInt("JabaLevel", upgradesMenu.jabaUpgradeLevel);
+            PlayerPrefs.SetFloat("JabaUp", upgradesMenu.jabaUpgradeCost);
+            PlayerPrefs.SetInt("HokkyLevel", upgradesMenu.hokkyUpgradeLevel);
+            PlayerPrefs.SetFloat("HokkyUp", upgradesMenu.hokkyUpgradeCost);
+            PlayerPrefs.SetInt("ArnoldLevel", upgradesMenu.arnoldUpgradeLevel);
+            PlayerPrefs.SetFloat("ArnoldUp", upgradesMenu.arnoldUpgradeCost);
+            PlayerPrefs.SetInt("EnhMulti", abilitys.enhancementMultiplikator);
+            PlayerPrefs.SetInt("WarMulti", abilitys.warMultiplikator);
+            PlayerPrefs.SetInt("HeavyMulti", abilitys.heavyStrikeMultiplikator);
+            PlayerPrefs.SetInt("PassDmg", charakters.passiveDmg);
         }
         animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
         if (animStateInfo.IsName("Attack"))
